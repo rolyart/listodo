@@ -1,0 +1,20 @@
+{
+    "short_name": "DailyTask",
+    "name": "DailyTask organize your day",
+    "icons": [
+      {
+        "src":"favicon-194x194.png",
+        "sizes": "194x194 512x512",
+        "type": "image/png"
+      },
+      {
+        "src":"favicon-144x144.png",
+        "sizes": "144x144",
+        "type": "image/png"
+      }
+    ],
+    "start_url": "/dailytask/index.html",
+    "background_color": "#673AB7",
+    "theme_color": "#673AB7",
+    "display": "standalone"
+  }

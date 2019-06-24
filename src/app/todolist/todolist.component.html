@@ -1,0 +1,45 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <mat-icon>assignment_turned_in</mat-icon> <span class="app-name">LisToDo</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button  (click)="checkAll()" >
+      <mat-icon>done_all</mat-icon>
+    </button>
+    <button mat-icon-button (click)="uncheckAll()">
+      <mat-icon>redo</mat-icon>
+    </button>
+    <button mat-icon-button (click)="deleteAll()">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<form class="add-task" (keyup.enter)="addTask(newTask)">
+    <mat-form-field  class="task-control">
+      <input matInput placeholder="Add new task and press enter" [(ngModel)]="newTask" name="newTask" color="primary" >
+    </mat-form-field>
+</form>
+
+<ng-template #noData>
+  <mat-list role="list" class="todo-list nothing-to-do" [@showHide] >
+    <img mat-card-image src="assets/nothing-to-do.jpg" alt="Photo of a Shiba Inu">
+  </mat-list>
+</ng-template>
+
+<mat-list role="list" class="todo-list" *ngIf="data.todo.length>0;else noData">
+  <mat-card 
+    *ngFor="let item of data.todo" 
+    class="todo-item" 
+    [ngClass]="{'done-true': item.completed, 'done-false': !item.completed}"
+    [@translateY]
+  >
+    <button mat-button  class="title">
+      <mat-icon (click)="uncheckTask(item)" class="checked"  *ngIf="item.completed">check_box</mat-icon>
+      <mat-icon  (click)="checkTask(item)" class="unchecked" *ngIf="!item.completed">check_box_outline_blank</mat-icon>
+      {{item.title}}
+    </button>
+    <button mat-button class="delete" color="warn">
+      <mat-icon (click)="removeTask(item)" class="btn" color="7CB342" >delete</mat-icon>
+    </button>
+  </mat-card>
+</mat-list>

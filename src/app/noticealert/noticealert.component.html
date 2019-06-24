@@ -1,0 +1,15 @@
+<ul 
+	class="notice-alert" 
+	*ngIf="noticeService.notice.length" 
+	[@noticeAnimation]="noticeService.notice.length"
+	>
+	<li *ngFor="let notice of noticeService.notice" class="{{notice.type}}">
+		<mat-icon class="icon" *ngIf="notice.icon">{{notice.icon}}</mat-icon>
+		{{notice.content}}
+		<button
+			*ngIf="notice.close"
+			(click)="noticeService.close(notice)"
+			class="notice-close">&times;
+		</button>
+	</li>
+</ul>
